@@ -1,0 +1,85 @@
+#Assignment.rb
+
+#define attributes for new users
+class User
+  attr_accessor :name
+  attr_accessor :received_contents
+
+#initalize attributes of users
+  def initialize(name, received_contents)
+    self.name = name
+    self.received_contents = recieved_contents
+  end
+end
+
+#define attributes for new boxes
+class Boxes 
+  attr_accessor :code
+  attr_accessor :contents
+
+#initalize attributes of boxes
+  def initialize(code, contents)
+    self.code = code
+    self.contents = contents
+  end
+end
+
+
+#create array to accept a list current users
+
+user  = [
+
+  { name: 'Steve', received_contents: '1a,1b,3c'},
+  { name: 'Virginie', received_contents: '3a,2b,3c'},
+  { name: 'Fiona', received_contents: '1b,2a,3b' },
+  { name: 'Jenny', received_contents: '3b,2c,1b'},
+  { name: 'James', received_contents: '2b,1b,3a'}
+
+  ]
+
+#create array for new boxes 
+
+  boxes = [
+    { code: 'gr1', contents: '1a,1b' },
+    { code: 'gr2', contents: '1a,2b' },
+    { code: 'gr3', contents: '1b,2c' },
+    { code: 'gr4', contents: '2c,3c' },
+    { code: 'gr5', contents: '3b,1c' }
+  ]
+
+# Display Current Users &  Deliveries
+
+user.each do |user|
+  puts user
+end
+
+#return a list of boxes they can recieve without getting the smame contents again 
+
+  user = user.find do |user|
+    user[:name] == '1a,1b'
+    user[:name] == '1a,2b'
+    user[:name] == '1b,2c'
+    user[:name] == '2c,3c'
+    user[:name] == '3b,1c'
+  end
+
+  if user
+     puts user[:name]
+     puts user[:recieved_contents]
+     puts boxes [:code]
+     puts contents [:contents]
+     puts "New delivery!"
+  else
+     puts "has aleady received contents do not deliver!" 
+      
+  end
+
+
+
+#if {user} recieved_contents == boxes_contents of gr1,gr2,gr3,gr4,gr5 
+    #puts "{user} has already recieved contents do no deliver"
+  #else
+    #puts"New delivery for {user}"
+  #end
+
+  
